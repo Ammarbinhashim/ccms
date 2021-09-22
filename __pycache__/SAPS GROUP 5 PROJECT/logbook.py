@@ -47,6 +47,7 @@ def UserReg():
     contact = input("Enter Contact Info: ")
     udopen = open("userdata.csv",'a',newline=" ")
     adddata = csv.writer(udopen,delimiter=',')
+    adddata.writerow(['Full Name\t\tAge\t\tID Type\t\tID Number\t\tContact Info'])
     adddata.writerow([fullname,userage,seld,contact])
     udopen.close()
 
@@ -99,13 +100,13 @@ def Modify():
                     idask = input("Enter ID Number: ")
                 else:
                     print("Please Choose the Right Option.")
-            else:
+
                 w.writerow(i)
-        udopen.close()
-        udclose.close()
-        os.remove('userdata.csv')
-        os.rename('notammar.csv','userdata.csv')
-        print('\n File Updated')
+                udopen.close()
+                udclose.close()
+                os.remove('userdata.csv')
+                os.rename('notammar.csv','userdata.csv')
+                print('\n File Updated')
 
 def kickhimout():
     x = 0
@@ -118,7 +119,7 @@ def kickhimout():
         if sname in i:
             for j in i:
                 print(j,"\t\t\t",end=" ")
-                found = 1
+                x = 1
         print("\n")
     udopen.close()
     if x == 0:
@@ -142,7 +143,7 @@ def kickhimout():
         print('\n Deleted')
 
 def UserFolder():
-    udopen = open('userdata.csv','r')
+    udopen = open('userdata1.csv','r')
     r = csv.reader(udopen)
     print("Full Name\t\tAge\t\tID Type\t\tID Number\t\tContact Info")
     for i in r:
